@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036747645532",
+    "project_id": "alpr-integration",
+    "storage_bucket": "alpr-integration.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036747645532:android:3929804a5dd99975717c99",
+        "android_client_info": {
+          "package_name": "com.lucianthomaz.alpr_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwvDyUE_DJUR_XAFnk7446w0vELYcEx2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
