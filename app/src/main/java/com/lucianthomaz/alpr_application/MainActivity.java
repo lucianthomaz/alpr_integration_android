@@ -33,7 +33,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_LOCATION_PERMISSION = 123;
     FusedLocationProviderClient fusedLocationClient;
-    Button locationButton;
     Retrofit retrofit;
     UserService userService;
 
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         fusedLocationClient =  LocationServices.getFusedLocationProviderClient(this);
-        locationButton = findViewById(R.id.locationButton);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://curly-space-fishstick-7v4p7x9jw424pg-8080.app.github.dev") // Substitua pela URL do seu servidor
@@ -53,12 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         userService = retrofit.create(UserService.class);
 
-        locationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkLocationPermission();
-            }
-        });
     }
 
     private void checkLocationPermission() {
