@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -35,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationClient;
     Retrofit retrofit;
     UserService userService;
+    TextView tvUser;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        tvUser = findViewById(R.id.tvUser);
 
         fusedLocationClient =  LocationServices.getFusedLocationProviderClient(this);
 
@@ -51,11 +53,14 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         userService = retrofit.create(UserService.class);
 
+        checkLocationPermission();
+
     }
 
     private void checkLocationPermission() {
         SharedPreferences sharedPreferences = getSharedPreferences("ALPR_Application_Preferences", Context.MODE_PRIVATE);
         String alpr_username = sharedPreferences.getString("alpr_username", "");
+        tvUser.setText(alpr_username);
         System.out.println("ALPR_USERNAME: " + alpr_username);
         if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             // The permission is already granted, you can proceed to get the location.
